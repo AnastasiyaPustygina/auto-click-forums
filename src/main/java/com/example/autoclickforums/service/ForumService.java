@@ -37,6 +37,17 @@ public class ForumService {
                 () -> new ForumNotFoundException(name)).setUser(user);
         dao.updateForums(forums);
     }
+    public void updateSecretWord(String name, String secretWord){
+        List<Forum> forums = dao.getForums();
+        Forum forum = forums.stream().filter(f -> f.getName().equals(name)).findFirst().orElseThrow(
+                () -> new ForumNotFoundException(name));
+        User user = forum.getUser();
+        user.setSecretWord(secretWord);
+        forums.stream().filter(f -> f.getName().equals(name)).findFirst().orElseThrow(
+                () -> new ForumNotFoundException(name)).setUser(user);
+        dao.updateForums(forums);
+    }
+
     public void updatePassword(String name, String password){
         List<Forum> forums = dao.getForums();
         Forum forum = forums.stream().filter(f -> f.getName().equals(name)).findFirst().orElseThrow(

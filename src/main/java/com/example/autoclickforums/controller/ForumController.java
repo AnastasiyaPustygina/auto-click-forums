@@ -30,6 +30,12 @@ public class ForumController {
         forumService.updateLogin(name, login);
     }
 
+    @PatchMapping(path = "/user/secret_word/{name}")
+    @ResponseStatus(value = HttpStatus.OK)
+    public void updateSecretWord(@PathVariable(name = "name") String name, @RequestParam(name = "secret_word") String secret_word) {
+        forumService.updateSecretWord(name, secret_word);
+    }
+
     @PatchMapping(path = "/user/password/{name}")
     @ResponseStatus(value = HttpStatus.OK)
     public void updatePassword(@PathVariable(name = "name") String name, @RequestParam(name = "password") String password) {

@@ -8,7 +8,7 @@ public class IdElements {
     private final String idButtonAuthorize;
     private final String idInputLogin;
     private final String idInputPassword;
-    private final String idButtonLogin;
+    private final String classButtonLogin;
     private final String idMainButton;
 
 

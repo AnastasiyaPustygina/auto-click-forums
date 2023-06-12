@@ -7,5 +7,7 @@ import lombok.Data;
 @AllArgsConstructor
 public class User {
     private String login;
+    private String secretWord;
+
     private String password;
 }

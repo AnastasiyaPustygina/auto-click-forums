@@ -28,7 +28,7 @@ public class AuthorizeService {
             editData(forum.getIdElements().getIdInputLogin(), forum.getUser().getLogin(),
                     forum.getIdElements().getIdInputPassword(), forum.getUser().getPassword(), driver);
             try{
-                openAuthorizationWindow(forum.getIdElements().getIdButtonLogin(), driver);
+                login(forum.getIdElements().getClassButtonLogin(), driver);
             }catch (Exception e){
                 message.setText("Ошибка авторизации. Ошибка при отправке данных для авторизации");
                 logger.error(e.getMessage());
@@ -51,8 +51,8 @@ public class AuthorizeService {
         inputLogin.sendKeys("value", login);
         inputPassword.sendKeys("value", password);
     }
-    private void login(String idButtonLogin, WebDriver driver){
-        WebElement buttonLogin = driver.findElement(By.id(idButtonLogin));
+    private void login(String classButtonLogin, WebDriver driver){
+        WebElement buttonLogin = driver.findElement(By.className(classButtonLogin));
         buttonLogin.click();
     }
 }
