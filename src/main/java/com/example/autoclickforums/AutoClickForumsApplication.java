@@ -9,7 +9,7 @@ public class AutoClickForumsApplication {
 
 	public static void main(String[] args) {
 
-		SpringApplication.run(AutoClickForumsApplication.class, args).getBean(ExecutionService.class).start();
+		SpringApplication.run(AutoClickForumsApplication.class, args);
 	}
 
 }

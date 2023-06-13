@@ -13,6 +13,15 @@ import java.util.List;
 public class ForumService {
     private final ForumDao dao;
 
+    public List<Forum> getForums(){
+        return dao.getForums();
+    }
+
+    public Forum getForumByName(String name){
+        return dao.getForums().stream().filter(f -> f.getName().equals(name)).findFirst().orElseThrow(
+                () -> new ForumNotFoundException(name));
+    }
+
     public void updateUrl(String name, String url){
         List<Forum> forums = dao.getForums();
         forums.stream().filter(f -> f.getName().equals(name)).findFirst().orElseThrow(

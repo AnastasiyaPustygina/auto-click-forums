@@ -1,16 +1,28 @@
 package com.example.autoclickforums.controller;
 
+import com.example.autoclickforums.domain.Forum;
 import com.example.autoclickforums.service.ForumService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequiredArgsConstructor
 public class ForumController {
 
-    public ForumService forumService;
+    private final ForumService forumService;
 
+    @GetMapping(path = "/forums")
+    public List<Forum> getForums() {
+        return forumService.getForums();
+    }
+
+    @GetMapping(path = "/forum/{name}")
+    public Forum getForumByName(@PathVariable(name = "name") String name) {
+        return forumService.getForumByName(name);
+    }
     @PatchMapping(path = "/forum/url/{name}")
     @ResponseStatus(value = HttpStatus.OK)
     public void updateUrl(@PathVariable(name = "name") String name, @RequestParam(name = "url") String url) {
